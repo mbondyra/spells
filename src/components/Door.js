@@ -8,7 +8,7 @@ export default props => (
     <Entity
         material={
             {
-                src: '#carpet',
+                src: '#door',
                 visible: props.doorVisible,
                 side: "double"
             }

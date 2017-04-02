@@ -149,14 +149,23 @@ export default class SceneService extends Component {
             <Scene physics>
                 <a-assets>
                     <img id="carpet" src="./carpet.jpg"/>
-                </a-assets>
+                    <img id="wall" src="./wall.jpg"/>
+                    <img id="floor" src="./floor.jpg"/>
+                    <img id="door" src="./door.jpg"/>
 
+                    <asset-item id="dementor-obj" src="./models/Dementor/Dementor.obj"></asset-item>
+                    <asset-item id="dementor-mtl" src="./models/Dementor/Dementor.mtl"></asset-item>
+                    <asset-item id="voldemort-obj" src="./models/Voldemort/LordVoldemort.obj"></asset-item>
+                    <asset-item id="voldemort-mtl" src="./models/Voldemort/LordVoldemort.mtl"></asset-item>
+                    <asset-item id="rock-obj" src="./models/rock/Rock1.obj"></asset-item>
+                    <asset-item id="rock-mtl" src="./models/rock/Rock1.mtl"></asset-item>
+                </a-assets>
 
                 <Camera>
                     <Cursor/>
                 </Camera>
 
-                <Sky color={this.state.lighting}/>
+                <Sky color="#000"/>
                 <Earth />
 
                 <Lighting color={this.state.lighting}/>
