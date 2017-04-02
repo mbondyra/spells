@@ -7,17 +7,25 @@ import Sky from './Sky'
 import Camera from './Camera'
 import Earth from './Earth'
 import Lighting from './Lighting'
+import LumosRoom from './rooms/LumosRoom'
+import DementorsRoom from './rooms/DementorsRoom'
+import VoldemortRoom from './rooms/VoldemortRoom'
+import Walls from './Walls'
 
 export default class SceneService extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: 'red',
-            lighting: '#000',
-            doorOpen: false,
+            lighting: '#FFF',
+            doorVisible: true,
             voldemortVisible: true,
-            stoneBlocking: true,
+            stoneVisible: true,
             dementorsVisible: true,
+            x: 18,
+            y: 30,
+            lumosRoom: 8,
+            dementorsRoom: 19,
+            height: 6
         }
         this.init();
     };
@@ -33,13 +41,15 @@ export default class SceneService extends Component {
         recognition.lumos = ['lumos', 'luma', 'loomos', 'lumas', 'lumo', 'numa'];
         recognition.alohomora = ['alohomora'];
         recognition.expectoPatronum = ['expecto patronum', 'ekspecto patronum', 'ekspekto patronum'];
-        recognition.wingardiumLeviosa = ['wingardium leviosa', 'wingardium lewiosa'];
+        recognition.wingardiumLeviosa = ['wingardium leviosa', 'wingardium lewiosa', 'guardian leviosa', 'gardium leviosa'];
+        recognition.avadaKedavra = ['avada kedavra', 'awada kedavra', 'avada kedawra', 'awada kedawra'];
 
         var grammar = '#JSGF V1.0; grammar spells; public <spell> = '
             + recognition.lumos
                 .concat(recognition.alohomora)
                 .concat(recognition.expectoPatronum)
                 .concat(recognition.wingardiumLeviosa)
+                .concat(recognition.avadaKedavra)
                 .join(' | ')
             + ' ;'
 
@@ -68,8 +78,8 @@ export default class SceneService extends Component {
                 this.expectoPatronum();
             } else if(this.isMatch(wordList, event.srcElement.wingardiumLeviosa)) {
                 this.wingardiumLeviosa();
-            } else if(this.isMatch(wordList, event.srcElement.expelliarmus)) {
-                this.expelliarmus();
+            } else if(this.isMatch(wordList, event.srcElement.avadaKedavra)) {
+                this.avadaKedavra();
             }
         }
 
@@ -110,7 +120,7 @@ export default class SceneService extends Component {
 
     alohomora() {
         this.setState({
-            doorOpen: true
+            doorVisible: false
         })
     }
 
@@ -122,11 +132,11 @@ export default class SceneService extends Component {
 
     wingardiumLeviosa() {
         this.setState({
-            stoneBlocking: false
+            stoneVisible: false
         })
     }
 
-    expelliarmus() {
+    avadaKedavra() {
         this.setState({
             voldemortVisible: false
         })
@@ -134,12 +144,6 @@ export default class SceneService extends Component {
 
     render() {
         window.app = this;
-        const changeColor = () => {
-            const colors = ['red', 'orange', 'yellow', 'green', 'blue']
-            const color = colors[Math.floor(Math.random() * colors.length)]
-            this.setState({color})
-        };
-
 
         return (
             <Scene physics>
@@ -157,33 +161,34 @@ export default class SceneService extends Component {
 
                 <Lighting color={this.state.lighting}/>
 
-                <Entity
-                    material={{color: this.state.color}}
-                    onClick={changeColor}
-                    position="0 0 -5"
-                    geometry={{primitive: "box"}}
-                    scale={"2 1 0.5"}
-                >
-                    <Animation attribute="rotation" dur="2000" repeat="indefinite" to="0 360 360"/>
-                </Entity>
+                <Walls
+                    x={this.state.x}
+                    y={this.state.y}
+                    height={this.state.height}
+                />
 
-                <Entity
-                    material={
-                        {
-                            src: '#carpet'
-                        }
-                    }
-                    position={[0, -5, 0]}
-                    geometry={
-                        {
-                            primitive: "plane"
-                            , width: "20"
-                            , height: "20"
-                        }
-                    }
-                    rotation={[-90, 0, 0]}
-                >
-                </Entity>
+                <LumosRoom
+                    doorVisible={this.state.doorVisible}
+                    lumosRoom={this.state.lumosRoom}
+                    x={this.state.x}
+                    height={this.state.height}
+                />
+
+                <DementorsRoom
+                    stoneVisible={this.state.stoneVisible}
+                    dementorsVisible={this.state.dementorsVisible}
+                    dementorsRoom={this.state.dementorsRoom}
+                    x={this.state.x}
+                    y={this.state.y}
+                    height={this.state.height}
+                />
+
+                <VoldemortRoom
+                    voldemortVisible={this.state.voldemortVisible}
+                    y={this.state.y}
+                />
+
+
 
             </Scene>
         );
