@@ -16,7 +16,7 @@ export default class SceneService extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lighting: '#FFF',
+            lighting: '#000',
             doorVisible: true,
             voldemortVisible: true,
             stoneVisible: true,
