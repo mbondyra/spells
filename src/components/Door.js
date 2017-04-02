@@ -9,7 +9,8 @@ export default props => (
         material={
             {
                 src: '#carpet',
-                visible: props.doorVisible
+                visible: props.doorVisible,
+                side: "double"
             }
         }
         position={"0 " + (props.height/2 - 1) + " " + -props.lumosRoom}

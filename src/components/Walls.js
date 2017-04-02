@@ -9,7 +9,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={"0 -1 " + -props.y/2}
@@ -27,7 +28,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={-props.x/2 + " " + (props.height/2 - 1) + " " + -props.y/2}
@@ -45,7 +47,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={props.x/2 + " " + (props.height/2 - 1) + " " + -props.y/2}
@@ -63,7 +66,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={"0 " + (props.height/2 - 1) + " 0"}
@@ -81,7 +85,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={"0 " + (props.height/2 - 1) + " " + -props.y}

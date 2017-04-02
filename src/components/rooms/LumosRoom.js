@@ -10,7 +10,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={-((props.x/2 - 1)/2 + 1) + " " + (props.height/2 - 1) + " " + -props.lumosRoom}
@@ -27,7 +28,8 @@ export default props => (
         <Entity
             material={
                 {
-                    src: '#carpet'
+                    src: '#carpet',
+                    side: "double"
                 }
             }
             position={((props.x/2 - 1)/2 + 1) + " " + (props.height/2 - 1) + " " + -props.lumosRoom}
