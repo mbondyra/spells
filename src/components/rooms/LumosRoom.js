@@ -1,6 +1,4 @@
-/**
- * Created by rdors on 2017-04-02.
- */
+
 import React from "react";
 import {Entity} from "aframe-react";
 import Door from "./../Door";

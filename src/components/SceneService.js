@@ -184,6 +184,8 @@ export default class SceneService extends Component {
                 />
 
                 <DementorsRoom
+
+                    doorVisible={this.state.doorVisible}
                     stoneVisible={this.state.stoneVisible}
                     dementorsVisible={this.state.dementorsVisible}
                     dementorsRoom={this.state.dementorsRoom}
